@@ -40,8 +40,8 @@ export class SongsByArtistComponent {
         },
         {
             trackId: 528437613,
-            artistName: "LINKIN PARK",
-            collectionName: "Hybrid Theory",
+            artistName: '',
+            collectionName: null,
             artistViewUrl: "https://itunes.apple.com/us/artist/linkin-park/id148662?uo=4",
             collectionViewUrl: "https://itunes.apple.com/us/album/in-the-end/id528436018?i=528437613&uo=4",
             artworkUrl30: "http://is5.mzstatic.com/image/thumb/Music/v4/a3/da/73/a3da7362-c9f7-a6a4-bd00-632776ac74c1/source/30x30bb.jpg",
