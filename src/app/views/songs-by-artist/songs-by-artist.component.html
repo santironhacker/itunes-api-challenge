@@ -1,3 +1,11 @@
-<section>
-    I am the songs by artist component
+<section class="container-fluid">
+    <div class="row">
+        <app-card
+          *ngFor="let song of songsByArtist; let i = index"
+          [songInfo]="song"
+          [index]="i"
+          class="col-xs-6 col-md-3"
+        >
+        </app-card>
+    </div>
 </section>

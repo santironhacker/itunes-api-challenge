@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { SongsByArtistComponent } from './views/songs-by-artist/songs-by-artist.component';
+import { AppCardComponent } from './components/app-card/app-card.component';
 import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHeaderComponent,
-    SongsByArtistComponent
+    SongsByArtistComponent,
+    AppCardComponent
   ],
   imports: [
     BrowserModule,

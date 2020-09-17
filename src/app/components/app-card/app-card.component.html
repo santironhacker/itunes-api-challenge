@@ -1,0 +1,15 @@
+<ion-card class="card">
+    <img src="{{ songInfo.artworkUrl100 }}">
+    <ion-card-header>
+        <ion-card-title>
+            {{ songInfo.artistName || 'not availbale' }}
+        </ion-card-title>
+        <ion-card-subtitle>
+            {{ songInfo.collectionName || 'not availbale' }}
+        </ion-card-subtitle>
+    </ion-card-header>
+    
+    <ion-item>
+          <ion-icon name="heart-outline" slot="end"></ion-icon>
+    </ion-item>
+</ion-card>
