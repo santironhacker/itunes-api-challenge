@@ -1,0 +1,14 @@
+@use '../../../styles/_global_variables'
+@use '../../../styles/_mixins'
+
+.card 
+    margin: 16px 8px
+    img
+        object-fit: fill
+        width:100%
+
+    @each $breakpoint, $width in global_variables.$flexboxgrid-breakpoints
+        @include mixins.media($width)
+            @if $breakpoint == lg
+                margin: 16px 20px
+            
