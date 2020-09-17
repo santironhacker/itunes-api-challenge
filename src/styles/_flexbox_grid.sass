@@ -1,5 +1,9 @@
 /** FLEXBOX GRID SASS **/
-// from project URL: https://github.com/hugeinc/flexboxgrid-sass/blob/master/README.md 
+// inspired from project URL: https://github.com/hugeinc/flexboxgrid-sass/blob/master/README.md 
+
+@use 'styles/_global_variables'
+@use "sass:map"
+
 .wrapper
   box-sizing: border-box
   max-width: 1200px
@@ -260,9 +264,9 @@
 .last-xs
   order: 1
 
-@media only screen and (min-width: 48em)
+@media only screen and (min-width: map.get(global_variables.$flexboxgrid-breakpoints, "sm"))
   .container
-    width: 46rem
+    width: map-get(global_variables.$flexboxgrid-max-containers-width, "sm")
 
   [class*="col-sm"]
     box-sizing: border-box
@@ -471,9 +475,9 @@
   .last-sm
     order: 1
 
-@media only screen and (min-width: 62em)
+@media only screen and (min-width: map-get(global_variables.$flexboxgrid-breakpoints, "md"))
   .container
-    width: 61rem
+    width: map-get(global_variables.$flexboxgrid-max-containers-width, "md")
 
   [class*="col-md"]
     box-sizing: border-box
