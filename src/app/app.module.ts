@@ -7,6 +7,8 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { SongsByArtistComponent } from './views/songs-by-artist/songs-by-artist.component';
 import { AppCardComponent } from './components/app-card/app-card.component';
 import { IonicModule } from '@ionic/angular';
+import { HttpClientModule } from '@angular/common/http';
+import { ItunesDataService } from './services/itunes-data.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     IonicModule.forRoot()
   ],
-  providers: [],
+  providers: [ItunesDataService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

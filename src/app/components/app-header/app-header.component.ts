@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ItunesDataService } from '../../services/itunes-data.service';
 
 @Component({
     selector: 'app-header',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class AppHeaderComponent {
-    constructor() {}
+    constructor(
+        private itunesDataService: ItunesDataService
+    ) {}
+
+    onInputChange(eventValue) {
+        this.itunesDataService.fetchSongsByArtist(eventValue).subscribe();
+    }
 }
