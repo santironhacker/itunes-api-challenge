@@ -1,11 +1,11 @@
 <section class="container-fluid">
-    <div class="row">
-        <app-card
-          *ngFor="let song of songsByArtist; let i = index"
-          [songInfo]="song"
-          [index]="i"
-          class="col-xs-6 col-sm-4 col-md-3"
-        >
-        </app-card>
-    </div>
+  <div class="row">  
+    <app-card
+      *ngFor="let song of songsByArtist; let i = index"
+      [songInfo]="song"
+      [index]="i"
+      class="col-xs-6 col-sm-4 col-md-3 example-item"
+    >
+    </app-card>
+  </div>
 </section>
