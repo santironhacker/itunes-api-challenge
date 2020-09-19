@@ -1,5 +1,5 @@
-<section class="container-fluid">
-  <div class="row">  
+<section appWindowsScroll class="container-fluid">
+  <div class="row" >  
     <app-card
       *ngFor="let song of songsByArtist; let i = index"
       [songInfo]="song"
