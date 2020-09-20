@@ -8,22 +8,28 @@ import { map, tap } from 'rxjs/operators';
 export class ItunesDataService {
     itunesDataChanged = new Subject<ItunesMusicData[]>();
     private itunesMusicData: ItunesMusicData[] = [];
+    private searchTerm: string = '';
+    private offset: number = 0;
 
     constructor(
         private http: HttpClient
     ) {}
     
     setItunesMusicData(musicData: ItunesMusicData[]) {
-        this.itunesMusicData = musicData;
+        if (this.offset) {
+            this.itunesMusicData.push(...musicData);
+        } else {
+            this.itunesMusicData = musicData;
+        }
         this.itunesDataChanged.next(this.itunesMusicData.slice());
     }
 
-    /* getItunesMusicData() {
-        return this.itunesMusicData
-    } */
-
-    fetchSongsByArtist(searchTerm: string) {
-        const url = `https://itunes.apple.com/search?term=${searchTerm}&entity=song`;
+    fetchSongsByArtist(searchTerm?: string, offset?: number) {
+        if (searchTerm) { this.searchTerm = searchTerm; }
+        offset ? this.offset += 50 : this.offset = 0;
+        console.log('Offset is ', this.offset);
+        console.log('Search term is ', this.searchTerm);
+        const url = `https://itunes.apple.com/search?term=${this.searchTerm}&entity=song&offset=${this.offset}`;
         return this.http
             .get<ItunesMusicData[]>(
                 url
@@ -39,7 +45,6 @@ export class ItunesDataService {
                     return itunesData;
                   }),
                 tap(itunesData => {
-                    console.log('itunes Data ', itunesData);
                     this.setItunesMusicData(itunesData);
                 }),
             )

@@ -1,4 +1,5 @@
 import { Directive, NgZone } from '@angular/core';
+import { ItunesDataService } from '../services/itunes-data.service';
 
 @Directive({
     selector: '[appWindowsScroll]'
@@ -8,7 +9,10 @@ export class WindowScrollDirective {
 
     private eventOptions: boolean|{capture?: boolean, passive?: boolean};
 
-    constructor(private ngZone: NgZone) {}
+    constructor(
+        private ngZone: NgZone,
+        private itunesDataService: ItunesDataService
+    ) {}
 
     ngOnInit() {            
         this.ngZone.runOutsideAngular(() => {
@@ -24,12 +28,8 @@ export class WindowScrollDirective {
     scroll = (): void => {
         if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
            this.ngZone.run(() => {
-               this.tellAngular();
+               this.itunesDataService.fetchSongsByArtist(null, 1).subscribe();
            });
         }
     };
-
-    tellAngular() {
-        console.log('Window scrolled')
-    }
 }
