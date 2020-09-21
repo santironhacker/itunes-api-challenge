@@ -8,7 +8,10 @@
     >
     </app-card>
   </div>
-  <div *ngIf="isLoading">
+  <div *ngIf="isLoading && isNewDataAvailable">
     Loading more content...
+  </div>
+  <div *ngIf="!isNewDataAvailable">
+    No more data available.
   </div>
 </section>

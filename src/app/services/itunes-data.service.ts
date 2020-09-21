@@ -6,10 +6,11 @@ import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class ItunesDataService {
-    itunesDataChanged = new Subject<ItunesMusicData[]>();
+    itunesDataChanged = new Subject<{data: ItunesMusicData[], newDataAvailable: boolean}>();
     private itunesMusicData: ItunesMusicData[] = [];
     private searchTerm: string = '';
     private offset: number = 0;
+    private isMoreContentAvailable: boolean = true;
 
     constructor(
         private http: HttpClient
@@ -21,7 +22,7 @@ export class ItunesDataService {
         } else {
             this.itunesMusicData = musicData;
         }
-        this.itunesDataChanged.next(this.itunesMusicData.slice());
+        this.itunesDataChanged.next({data: this.itunesMusicData.slice(), newDataAvailable: this.isMoreContentAvailable});
     }
 
     fetchSongsByArtist(searchTerm?: string, offset?: number) {
@@ -42,6 +43,7 @@ export class ItunesDataService {
                             itunesData.push({ ...itunesResponse['results'][key] })
                         }
                     }
+                    itunesData.length < 50 ? this.isMoreContentAvailable = false : this.isMoreContentAvailable = true;
                     return itunesData;
                   }),
                 tap(itunesData => {

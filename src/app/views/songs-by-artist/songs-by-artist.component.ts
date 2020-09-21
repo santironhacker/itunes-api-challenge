@@ -13,6 +13,7 @@ export class SongsByArtistComponent implements OnInit {
     private subscription: Subscription;
     public songsByArtist: ItunesMusicData[] = [];
     public isLoading: boolean = false;
+    public isNewDataAvailable: boolean = true;
 
     constructor(private itunesDataService: ItunesDataService) {}
 
@@ -24,8 +25,9 @@ export class SongsByArtistComponent implements OnInit {
             })
         )
         .subscribe(
-            (itunesMusicData: ItunesMusicData[]) => {
-                this.songsByArtist = itunesMusicData;
+            (itunesMusicData: {data: ItunesMusicData[], newDataAvailable: boolean}) => {
+                this.songsByArtist = itunesMusicData.data;
+                this.isNewDataAvailable = itunesMusicData.newDataAvailable;
             }
         )
     }
@@ -36,5 +38,6 @@ export class SongsByArtistComponent implements OnInit {
 
     onScrollToBottom() {
         this.isLoading = true;
+        this.isNewDataAvailable = true;
     }
 }
