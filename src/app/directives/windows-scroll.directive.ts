@@ -1,13 +1,14 @@
-import { Directive, NgZone } from '@angular/core';
+import { Directive, EventEmitter, NgZone, Output } from '@angular/core';
 import { ItunesDataService } from '../services/itunes-data.service';
 
 @Directive({
-    selector: '[appWindowsScroll]'
+    selector: '[appWindowsScroll]',
+    outputs: ['onScrollToBottom']
 })
 
 export class WindowScrollDirective {
-
     private eventOptions: boolean|{capture?: boolean, passive?: boolean};
+    @Output() scrolledToBottom: EventEmitter<any> = new EventEmitter();
 
     constructor(
         private ngZone: NgZone,
@@ -29,6 +30,7 @@ export class WindowScrollDirective {
         if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
            this.ngZone.run(() => {
                this.itunesDataService.fetchSongsByArtist(null, 1).subscribe();
+               this.scrolledToBottom.emit();
            });
         }
     };
