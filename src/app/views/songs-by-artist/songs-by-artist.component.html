@@ -1,5 +1,5 @@
 <section appWindowsScroll (scrolledToBottom)="onScrollToBottom()" class="container-fluid">
-  <div class="row" >  
+  <article class="row" >  
     <app-card
       *ngFor="let song of songsByArtist; let i = index"
       [songInfo]="song"
@@ -7,11 +7,11 @@
       class="col-xs-6 col-sm-4 col-md-3 example-item"
     >
     </app-card>
-  </div>
-  <div *ngIf="isLoading && isNewDataAvailable">
+  </article>
+  <aside *ngIf="isLoading && isNewDataAvailable" class="alert-info" >
     Loading more content...
-  </div>
-  <div *ngIf="!isNewDataAvailable">
+  </aside>
+  <aside *ngIf="!isNewDataAvailable"  class="alert-warning">
     No more data available.
-  </div>
+  </aside>
 </section>

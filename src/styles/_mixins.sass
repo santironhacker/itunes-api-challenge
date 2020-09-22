@@ -1,3 +1,5 @@
+@use '../styles/global_variables'
+  
 /* MIXINS */
 @mixin section-generator($bk-color)
     background-color: $bk-color
@@ -5,3 +7,9 @@
 @mixin media($width)
   @media only screen and (min-width: $width)
     @content
+
+@mixin alert-generator($padding, $margin, $text-color, $border-radius)
+  padding: $padding
+  margin: $margin
+  color: $text-color
+  border-radius: $border-radius

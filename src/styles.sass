@@ -1,12 +1,14 @@
 @use 'styles/_global_variables'
 @use 'styles/_mixins'
 @use 'styles/_flexbox_grid'
+@use 'styles/_alerts'
 
 /** BODY **/
 body
   margin:0
   position: relative !important
   overflow: auto !important
+  background-color: global_variables.$background-secondary !important
 
 ::-webkit-scrollbar 
   display: none
