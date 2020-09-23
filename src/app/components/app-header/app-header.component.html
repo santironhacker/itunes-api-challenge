@@ -1,13 +1,14 @@
 <header class="container-fluid app-header">
-    <div class="row">
-        <div class="col-xs-3">
-            <iconify-icon data-icon="mdi:gesture-tap" data-rotate="180deg" data-flip="horizontal"></iconify-icon>
+    <div class="row bottom-xs">
+        <div class="col-xs-2">
+            <iconify-icon class="icon-tap" data-icon="mdi:gesture-tap" data-rotate="180deg" data-flip="horizontal" data-height="42"></iconify-icon>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-7">
             <ion-searchbar debounce="600" (ionChange)="onInputChange($event.target.value)"></ion-searchbar>
         </div>
-        <div class="col-xs-3">
-            icon placeholder
+        <div class="col-xs-3 end-xs">
+            <iconify-icon class="icon-heart" data-icon="mdi:cards-heart" data-height="38"></iconify-icon>
+            <ion-badge class="icon-counter-badge" color="danger">{{ favoritesCounter }}</ion-badge>
         </div>
     </div>
 </header>

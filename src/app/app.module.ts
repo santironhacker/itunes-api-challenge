@@ -10,6 +10,7 @@ import { AppCardComponent } from './components/app-card/app-card.component';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ItunesDataService } from './services/itunes-data.service';
+import { FavoritesCounterService } from './services/favorites-counter.service';
 
 import { WindowScrollDirective } from './directives/windows-scroll.directive';
 
@@ -28,7 +29,7 @@ import { WindowScrollDirective } from './directives/windows-scroll.directive';
     HttpClientModule,
     IonicModule.forRoot()
   ],
-  providers: [ItunesDataService],
+  providers: [ItunesDataService, FavoritesCounterService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

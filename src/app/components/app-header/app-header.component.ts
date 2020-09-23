@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FavoritesCounterService } from 'src/app/services/favorites-counter.service';
 import { ItunesDataService } from '../../services/itunes-data.service';
 
 @Component({
@@ -7,12 +9,26 @@ import { ItunesDataService } from '../../services/itunes-data.service';
     styleUrls: ['./app-header.component.sass']
 })
 
-export class AppHeaderComponent {
+export class AppHeaderComponent implements OnInit {
+    favoritesCounter: number = 0;
+    private counterSubscription: Subscription;
+
     constructor(
-        private itunesDataService: ItunesDataService
+        private itunesDataService: ItunesDataService,
+        private favoritesCounterService: FavoritesCounterService
     ) {}
+
+    ngOnInit() {
+        this.counterSubscription = this.favoritesCounterService.favoriteSongsCounterChanged
+        .subscribe(
+            (value: number) => {
+                this.favoritesCounter = value;
+            }
+        )
+    }
 
     onInputChange(eventValue) {
         this.itunesDataService.getSongsData(eventValue, 0);
     }
+
 }

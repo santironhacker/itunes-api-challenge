@@ -3,3 +3,12 @@
 
 .app-header
     @include mixins.section-generator(global_variables.$background-primary)
+
+.icon-tap
+    @include mixins.icon-styler(null, global_variables.$color-accent, baseline)
+
+.icon-heart
+    @include mixins.icon-styler(null, global_variables.$color-accent, super)
+
+.icon-counter-badge
+    @include mixins.icon-styler(null, global_variables.$color-accent, top)

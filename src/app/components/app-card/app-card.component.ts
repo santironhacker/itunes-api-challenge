@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ItunesMusicData } from 'src/app/models/itunes-music-data.model';
+import { FavoritesCounterService } from 'src/app/services/favorites-counter.service';
 
 @Component({
     selector: 'app-card',
@@ -11,5 +12,9 @@ export class AppCardComponent {
     @Input() songInfo: ItunesMusicData;
     @Input() index: number;
 
-    constructor() {}
+    constructor(private favoritesCounterService: FavoritesCounterService) {}
+
+    addToFavorites() {
+        this.favoritesCounterService.addSongToFavourites();
+    }
 }
