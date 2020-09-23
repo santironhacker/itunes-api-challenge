@@ -13,6 +13,6 @@ export class AppHeaderComponent {
     ) {}
 
     onInputChange(eventValue) {
-        this.itunesDataService.fetchSongsByArtist(eventValue, 0).subscribe();
+        this.itunesDataService.getSongsData(eventValue, 0);
     }
 }

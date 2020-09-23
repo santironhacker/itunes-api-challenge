@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { finalize } from 'rxjs/operators';
 import { ItunesDataService } from 'src/app/services/itunes-data.service';
 import { ItunesMusicData } from '../../models/itunes-music-data.model';
 
@@ -14,20 +13,31 @@ export class SongsByArtistComponent implements OnInit {
     public songsByArtist: ItunesMusicData[] = [];
     public isLoading: boolean = false;
     public isNewDataAvailable: boolean = true;
+    public searchTerm: string = '';
 
     constructor(private itunesDataService: ItunesDataService) {}
 
     ngOnInit() {
         this.subscription = this.itunesDataService.itunesDataChanged
-        .pipe(
-            finalize(() => {
-                this.isLoading = false;
-            })
-        )
         .subscribe(
-            (itunesMusicData: {data: ItunesMusicData[], newDataAvailable: boolean}) => {
+            (itunesMusicData: {
+                data: ItunesMusicData[],
+                newDataAvailable: boolean,
+                searchTerm: string,
+                isLoading: boolean
+            }) => {
                 this.songsByArtist = itunesMusicData.data;
                 this.isNewDataAvailable = itunesMusicData.newDataAvailable;
+                this.searchTerm = itunesMusicData.searchTerm;
+                this.isLoading = itunesMusicData.isLoading;
+            },
+            error => {
+                console.log('An error ocurred', error);
+                this.isLoading = false;        
+            },
+            () => {
+                console.log('Observable Completed');
+        
             }
         )
     }

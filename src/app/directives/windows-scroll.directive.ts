@@ -29,8 +29,9 @@ export class WindowScrollDirective {
     scroll = (): void => {
         if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
            this.ngZone.run(() => {
-               this.itunesDataService.fetchSongsByArtist(null, 1).subscribe();
+               this.itunesDataService.getSongsData(null, 1);
                this.scrolledToBottom.emit();
+               console.log('Scrolled to bottom');
            });
         }
     };

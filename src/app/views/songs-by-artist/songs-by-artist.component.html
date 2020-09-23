@@ -8,13 +8,16 @@
     >
     </app-card>
   </article>
-  <aside *ngIf="songsByArtist.length === 0" class="alert-info">
+  <aside *ngIf="songsByArtist.length === 0 && searchTerm.length === 0" class="alert-info">
     Please, enter a search term to look for your favourite music.
   </aside>
-  <aside *ngIf="isLoading" class="alert-info" >
-    Loading more content...
+  <aside *ngIf="songsByArtist.length === 0 && searchTerm.length > 0 && !isLoading" class="alert-warning">
+    Sorry, no data available for this search.
   </aside>
-  <aside *ngIf="!isNewDataAvailable" class="alert-warning">
+  <aside *ngIf="isLoading" class="alert-info" >
+    Loading content...
+  </aside>
+  <aside *ngIf="songsByArtist.length > 0 && !isNewDataAvailable && !isLoading" class="alert-warning">
     No more data available.
   </aside>
 </section>
