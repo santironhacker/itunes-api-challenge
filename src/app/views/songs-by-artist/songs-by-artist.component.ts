@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { FavoritesCounterData } from 'src/app/models/favorites-counter-data.model';
+import { FavoritesCounterService } from 'src/app/services/favorites-counter.service';
 import { ItunesDataService } from 'src/app/services/itunes-data.service';
 import { ItunesMusicData } from '../../models/itunes-music-data.model';
 
@@ -10,12 +12,17 @@ import { ItunesMusicData } from '../../models/itunes-music-data.model';
 
 export class SongsByArtistComponent implements OnInit {
     private subscription: Subscription;
+    private counterSubscription: Subscription;
     public songsByArtist: ItunesMusicData[] = [];
     public isLoading: boolean = false;
     public isNewDataAvailable: boolean = true;
     public searchTerm: string = '';
+    public favoritesIdsCollection: Object = {};
 
-    constructor(private itunesDataService: ItunesDataService) {}
+    constructor(
+        private itunesDataService: ItunesDataService,
+        private favoritesCounterService: FavoritesCounterService
+    ) {}
 
     ngOnInit() {
         this.subscription = this.itunesDataService.itunesDataChanged
@@ -39,15 +46,27 @@ export class SongsByArtistComponent implements OnInit {
                 console.log('Observable Completed');
         
             }
+        );
+        this.counterSubscription = this.favoritesCounterService.favoriteSongsCounterChanged
+        .subscribe(
+            (favoritesCounterData: FavoritesCounterData) => {
+                Object.assign(this.favoritesIdsCollection, favoritesCounterData.favoritesIds);
+                // console.log('Favorites collection is ', this.favoritesIdsCollection);
+            }
         )
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+        this.counterSubscription.unsubscribe();
     }
 
     onScrollToBottom() {
         this.isLoading = true;
         this.isNewDataAvailable = true;
+    }
+
+    addToFavorites(trackId: number) {
+        this.favoritesCounterService.addSongToFavourites(trackId);
     }
 }

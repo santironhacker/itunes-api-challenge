@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ItunesMusicData } from 'src/app/models/itunes-music-data.model';
-import { FavoritesCounterService } from 'src/app/services/favorites-counter.service';
 
 @Component({
     selector: 'app-card',
@@ -11,10 +10,12 @@ import { FavoritesCounterService } from 'src/app/services/favorites-counter.serv
 export class AppCardComponent {
     @Input() songInfo: ItunesMusicData;
     @Input() index: number;
+    @Input() favoriteIds: Object;
+    @Output() addFavorite: EventEmitter<number> = new EventEmitter<number>();
 
-    constructor(private favoritesCounterService: FavoritesCounterService) {}
+    constructor() {}
 
-    addToFavorites() {
-        this.favoritesCounterService.addSongToFavourites();
+    addToFavorites(trackId) {
+        this.addFavorite.emit(trackId);
     }
 }

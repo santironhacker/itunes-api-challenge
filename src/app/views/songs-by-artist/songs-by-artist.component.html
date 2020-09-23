@@ -2,9 +2,11 @@
   <article appWindowsScroll (scrolledToBottom)="onScrollToBottom()" class="row" >  
     <app-card
       *ngFor="let song of songsByArtist; let i = index"
+      class="col-xs-6 col-sm-4 col-md-3 example-item"
       [songInfo]="song"
       [index]="i"
-      class="col-xs-6 col-sm-4 col-md-3 example-item"
+      [favoriteIds]="favoritesIdsCollection"
+      (addFavorite)="addToFavorites($event)"
     >
     </app-card>
   </article>

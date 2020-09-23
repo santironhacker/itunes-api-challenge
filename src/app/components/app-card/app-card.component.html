@@ -12,6 +12,6 @@
         </ion-card-subtitle>
     </ion-card-header>
     <ion-item>
-          <ion-icon (click)="addToFavorites()" name="heart-outline" slot="end"></ion-icon>
+        <ion-icon (click)="addToFavorites(songInfo.trackId)" name="{{ favoriteIds[songInfo.trackId] ? 'heart' : 'heart-outline' }}" slot="end"></ion-icon>
     </ion-item>
 </ion-card>

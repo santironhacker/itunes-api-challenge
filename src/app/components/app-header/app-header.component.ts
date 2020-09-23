@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { FavoritesCounterData } from 'src/app/models/favorites-counter-data.model';
 import { FavoritesCounterService } from 'src/app/services/favorites-counter.service';
 import { ItunesDataService } from '../../services/itunes-data.service';
 
@@ -21,8 +22,8 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.counterSubscription = this.favoritesCounterService.favoriteSongsCounterChanged
         .subscribe(
-            (value: number) => {
-                this.favoritesCounter = value;
+            (favoritesCounterData: FavoritesCounterData) => {
+                this.favoritesCounter = favoritesCounterData.counter;
             }
         )
     }
