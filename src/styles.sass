@@ -4,11 +4,14 @@
 @use 'styles/_alerts'
 
 /** BODY **/
+// html
+// scroll-padding-top: 10vh
+
 body
-  margin:0
-  position: relative !important
+  @include mixins.section-generator(global_variables.$background-secondary, relative !important)
+  margin: 0
   overflow: auto !important
-  background-color: global_variables.$background-secondary !important
+  height: 90vh !important
 
 ::-webkit-scrollbar 
   display: none

@@ -2,4 +2,5 @@
 @use '../styles/_global_variables'
 
 .app-main
-    @include mixins.section-generator(global_variables.$background-secondary)
+    @include mixins.section-generator(global_variables.$background-secondary, relative)
+    margin-top: 10vh

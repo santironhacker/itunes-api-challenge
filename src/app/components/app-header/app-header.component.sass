@@ -2,7 +2,10 @@
 @use '../../../styles/mixins'
 
 .app-header
-    @include mixins.section-generator(global_variables.$background-primary)
+    @include mixins.section-generator(global_variables.$background-primary, fixed)
+    width: 100%
+    z-index: 10
+    top: 0
 
 .icon-tap
     @include mixins.icon-styler(null, global_variables.$color-accent, baseline)
