@@ -25,8 +25,6 @@ export class ItunesDataService {
     getSongsData(searchTerm?: string, offset?: number) {
         this.isLoading = true;
         offset ? this.offset += 50 : this.offset = 0;
-        console.log('Offset is ', this.offset);
-        console.log('Search term is ', searchTerm);
         if(searchTerm && searchTerm.length > 0) {
             this.searchTerm = searchTerm;
         }

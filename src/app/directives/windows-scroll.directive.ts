@@ -31,7 +31,6 @@ export class WindowScrollDirective {
            this.ngZone.run(() => {
                this.itunesDataService.getSongsData(null, 1);
                this.scrolledToBottom.emit();
-               console.log('Scrolled to bottom');
            });
         }
     };

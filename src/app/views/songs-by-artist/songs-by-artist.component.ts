@@ -39,19 +39,13 @@ export class SongsByArtistComponent implements OnInit {
                 this.isLoading = itunesMusicData.isLoading;
             },
             error => {
-                console.log('An error ocurred', error);
                 this.isLoading = false;        
-            },
-            () => {
-                console.log('Observable Completed');
-        
             }
         );
         this.counterSubscription = this.favoritesCounterService.favoriteSongsCounterChanged
         .subscribe(
             (favoritesCounterData: FavoritesCounterData) => {
                 Object.assign(this.favoritesIdsCollection, favoritesCounterData.favoritesIds);
-                // console.log('Favorites collection is ', this.favoritesIdsCollection);
             }
         )
     }
