@@ -2,6 +2,7 @@
 // inspired from project URL: https://github.com/hugeinc/flexboxgrid-sass/blob/master/README.md 
 
 @use 'styles/_global_variables'
+@use 'styles/_mixins'
 @use "sass:map"
 
 .wrapper
@@ -14,6 +15,7 @@
   margin-left: auto
   padding-right: 2rem
   padding-left: 2rem
+  @include mixins.section-generator(global_variables.$background-secondary, null, null)
 
 .row
   box-sizing: border-box
