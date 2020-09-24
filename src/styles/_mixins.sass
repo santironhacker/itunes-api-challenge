@@ -1,0 +1,22 @@
+@use '../styles/global_variables'
+  
+/* MIXINS */
+@mixin section-generator($bk-color, $position, $height)
+  background-color: $bk-color
+  position: $position
+  height: $height
+
+@mixin media($width)
+  @media only screen and (min-width: $width)
+    @content
+
+@mixin alert-generator($padding, $margin, $text-color, $border-radius)
+  padding: $padding
+  margin: $margin
+  color: $text-color
+  border-radius: $border-radius
+
+@mixin icon-styler($margin, $color, $vertical-align)
+  margin: $margin
+  color: $color
+  vertical-align: $vertical-align

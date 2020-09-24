@@ -1,0 +1,13 @@
+@use './_global_variables'
+@use './_mixins'
+
+.alert
+    @include mixins.alert-generator(10px, 10px, white, 4px)
+
+.alert-info
+    @extend .alert
+    background-color: global_variables.$color-info
+
+.alert-warning
+    @extend .alert
+    background-color: global_variables.$color-warning
