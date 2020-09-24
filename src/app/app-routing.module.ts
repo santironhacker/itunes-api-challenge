@@ -4,8 +4,8 @@ import { SongsByArtistComponent } from './views/songs-by-artist/songs-by-artist.
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/songs-by-artist', pathMatch: 'full' },
-  { path: 'songs-by-artist', component: SongsByArtistComponent }
+  { path: 'songs-by-artist', component: SongsByArtistComponent },
+  { path: '', redirectTo: '/songs-by-artist', pathMatch: 'full' }
 ];
 
 @NgModule({

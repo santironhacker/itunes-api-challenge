@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { SongsByArtistComponent } from './views/songs-by-artist/songs-by-artist.component';
-import { AlbumsByArtistComponent } from './views/albums-by-artist/albums-by-artist.component';
 import { AppCardComponent } from './components/app-card/app-card.component';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +18,6 @@ import { WindowScrollDirective } from './directives/windows-scroll.directive';
     AppComponent,
     AppHeaderComponent,
     SongsByArtistComponent,
-    AlbumsByArtistComponent,
     AppCardComponent,
     WindowScrollDirective
   ],
