@@ -180,6 +180,10 @@
               "browserTarget": "itunes-api-challenge:build:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
