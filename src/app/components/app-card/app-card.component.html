@@ -5,12 +5,17 @@
     </picture>
     <ion-card-header>
         <ion-card-title>
-            {{ songInfo.artistName || 'Unavailable info' }}
+            {{ songInfo.trackCensoredName || 'Unavailable info' }}
         </ion-card-title>
         <ion-card-subtitle>
-            {{ songInfo.collectionName || 'Unavailable info' }}
+            {{ songInfo.artistName || 'Unavailable info' }}
         </ion-card-subtitle>
     </ion-card-header>
+    <ion-card-content>
+        <em>
+            {{ songInfo.collectionName || 'Unavailable info' }}
+        </em>
+    </ion-card-content>
     <ion-item>
         <ion-icon (click)="addToFavorites(songInfo.trackId)" name="{{ favoriteIds[songInfo.trackId] ? 'heart' : 'heart-outline' }}" slot="end"></ion-icon>
     </ion-item>

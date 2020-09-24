@@ -2,6 +2,7 @@ export class ItunesMusicData {
     constructor(
         public trackId: number,
         public artistName: string,
+        public trackCensoredName: string,
         public collectionName: string,
         public artistViewUrl: string,
         public collectionViewUrl: string,
