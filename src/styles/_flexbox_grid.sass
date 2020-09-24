@@ -685,3 +685,37 @@
 
   .last-md
     order: 1
+
+@media only screen and (min-width: map-get(global_variables.$flexboxgrid-breakpoints, "lg"))
+  .container
+    width: map-get(global_variables.$flexboxgrid-max-containers-width, "lg")
+
+  [class*="col-lg"]
+    box-sizing: border-box
+    -webkit-box-flex: 0
+    -webkit-flex: 0 0 auto
+    -moz-box-flex: 0
+    -moz-flex: 0 0 auto
+    -ms-flex: 0 0 auto
+    flex: 0 0 auto
+    padding-right: 0.5rem
+    padding-left: 0.5rem
+
+  .col-lg-3
+    -webkit-flex-basis: 25%
+    -moz-flex-basis: 25%
+    -ms-flex-preferred-size: 25%
+    flex-basis: 25%
+    max-width: 25%
+
+  .col-lg
+    -webkit-box-flex: 1
+    -webkit-flex-grow: 1
+    -moz-flex-grow: 1
+    -ms-flex-positive: 1
+    flex-grow: 1
+    -webkit-flex-basis: 0
+    -moz-flex-basis: 0
+    -ms-flex-preferred-size: 0
+    flex-basis: 0
+    max-width: 100%
